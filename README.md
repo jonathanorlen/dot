@@ -1,24 +1,48 @@
-# Lumen PHP Framework
+# Dokumentasi
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel/lumen-framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://img.shields.io/packagist/v/laravel/lumen-framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://img.shields.io/packagist/l/laravel/lumen)](https://packagist.org/packages/laravel/lumen-framework)
+Pada projek kali ini menggunakan Laravel Lumen, Lumen sendiri merupakan microframework yang secara khusus digunakan untuk membuat RESTFUL API (Application Programming Interface). Kelebihan menggunakan Lumen sebagai RESTFUL API adalah kecepatan requestnya, dikarenakan terdapat pengurangan fitur pada Laravel utuh.
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+### Langkah-langkah
 
-## Official Documentation
+1. Clone repository
+   ```sh
+   git clone [https://github.com/your_username_/Project-Name.git](https://github.com/jonathanorlen/dot.git
+   ```
+   
+2. Melalui terminal masuk ke folder pada repository yang telah di clone, ketikan berikut
+   ```sh
+   composer install
+   ```
+   
+3. Buat database pada localhost dengan nama 'dot' kemudian sambungkan pada file enviroment di `.env` seperti dibawah ini contohnya
+   ```php
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=dot
+    DB_USERNAME=root
+    DB_PASSWORD=
+   ```
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
-
-## Contributing
-
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+4. Jika sudah sesuai dengan database, lakukan migrasi table pada database, dengan mengetikan perintah berikut ini
+   ```sh
+    php artisan migrate
+   ```
+   
+5. Jika migrasi sudah sukses dijalankan, ketikan perintah pada terminal untuk mengambil data dari API RajaOngkir dan memasukan kedalam database berikut ini
+   ```sh
+    php artisan fetc:API
+   ```
+6. Jika data pada API sudah masuk kedalam database jalankan perintah berikut pada terminal anda
+   ```sh
+    php -S localhost:8000 -t public
+   ```
+   Perintah di atas digunakan pada Lumen karena tidak terdapat perintah `php artisan serve` pada Laravel full framework
+   
+7. Pengambilan API dapat dilakukan dengan mengunjungi alamat seperti ini <br>
+   `http://localhost:8000/search/city`  => Digunakan untuk mengakses data semua kota<br>
+   `http://localhost:8000/search/province` => Digunakan untuk mengakses data semua provinsi<br>
+   <br>
+   Untuk mengakses data spesifik kota ataupun provinsi sesuai id bisa dilakukan seperti berikut ini : <br>
+   `http://localhost:8000/search/city?id={city_id}`  => Digunakan untuk mengakses data kota berdasarkan city_id<br>
+   `http://localhost:8000/search/province?id={province_id}` => Digunakan untuk mengakses data provinsi berdasarkan province_id<br>
